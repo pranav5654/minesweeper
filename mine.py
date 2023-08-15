@@ -7,14 +7,15 @@ root = Tk()
 root.title("Minesweeper")
 root.config(bg="#D4FBFF")
 
-y_len = 10 
-x_len = 10
-chance = 10
+
+# initial values
+y_len = 10                 # size of grid 
+x_len = 10                 # size of grid
+chance = 10                # percentage of tiles to be mines
 base_color = "#7EE6FC"
 move_color = "blue"
 flag_color = "#CB0C0C"
 blast_color = "#D4FBFF"
-# all_b[(x_c()-1)*x_len + y_c() - 1]
 
 
 prev_color = base_color
@@ -22,6 +23,9 @@ prev_color = base_color
 all_b = []
 mine_b = []
 safe_b = []
+
+co_m = 0
+co_red = 0
 
 c_time = time.time()
 
@@ -40,8 +44,6 @@ def enter(eff, current_b, row, column):
 
     current = [row, column]
 
-co_m = 0
-co_red = 0
 def place_flag(eff, current_b, row, column):
     global p_color,co_m,co_red
     
@@ -214,8 +216,10 @@ def ending(wi_lo):
             
     root1.mainloop()
 
-for b in mine_b:
-   b["bg"] = "green"
+
+#uncomment to show the mines on screen 
+# for b in mine_b:
+#    b["bg"] = "green"
 
 for b in all_b:
     b["command"] = clicked
@@ -226,4 +230,3 @@ x_c = lambda: current[0]
 y_c = lambda: current[1]
 
 root.mainloop()
-
